@@ -7,7 +7,14 @@
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  mix-blend-mode: difference;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 12, 0.55) 0%,
+    rgba(10, 10, 12, 0.35) 55%,
+    transparent 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .inner {
@@ -17,17 +24,23 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
+}
+
+.brand {
+  justify-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .logo {
-  justify-self: start;
   font-family: var(--font-display);
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--text);
   transition: opacity 0.3s var(--ease-out-expo);
 }
 
@@ -35,27 +48,35 @@
   opacity: 0.65;
 }
 
+.year {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
 .nav {
   justify-self: center;
   display: flex;
   align-items: center;
-  gap: clamp(28px, 4vw, 56px);
+  gap: clamp(20px, 2.5vw, 36px);
 }
 
 .link {
   position: relative;
-  padding: 10px 0;
-  font-size: clamp(0.875rem, 1.25vw, 1.0625rem);
+  padding: 8px 0;
+  font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-muted);
   transition: color 0.3s var(--ease-out-expo);
 }
 
 .link:hover,
 .link[data-active="true"] {
-  color: #fff;
+  color: var(--text);
 }
 
 .linkText {
@@ -68,19 +89,19 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 2px;
+  height: 1px;
   background: var(--accent);
 }
 
 .contactBtn {
   justify-self: end;
-  font-size: clamp(0.875rem, 1.25vw, 1.0625rem);
+  font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #fff;
-  padding: 16px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--text);
+  padding: 11px 22px;
+  border: 1px solid var(--border-hover);
   border-radius: 999px;
   transition:
     background 0.3s var(--ease-out-expo),
@@ -88,8 +109,8 @@
 }
 
 .contactBtn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 @media (max-width: 768px) {

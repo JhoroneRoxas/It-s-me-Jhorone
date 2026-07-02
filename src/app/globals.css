@@ -23,7 +23,7 @@
   --font-mono: var(--font-geist-mono), "SF Mono", "Cascadia Code", monospace;
   --page-gutter: clamp(24px, 6vw, 120px);
   --max-width: 1400px;
-  --nav-height: 120px;
+  --nav-height: 96px;
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 

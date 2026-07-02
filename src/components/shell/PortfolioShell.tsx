@@ -58,7 +58,10 @@ export function PortfolioShell() {
 
           <main className={styles.main}>
             <section id="home" className={styles.section}>
-              <Hero onNavigate={handleNavigate} onEnterIdle={handleEnterIdle} />
+              <Hero
+                onNavigate={handleNavigate}
+                onEnterIdle={handleEnterIdle}
+              />
             </section>
 
             <section id="about" className={styles.section}>

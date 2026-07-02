@@ -14,14 +14,16 @@ export function NavHeader({ activeSection, onNavigate }: NavHeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <button
-          type="button"
-          className={styles.logo}
-          onClick={() => onNavigate("home")}
-          aria-label="Return to home"
-        >
-          YNZER
-        </button>
+        <div className={styles.brand}>
+          <button
+            type="button"
+            className={styles.logo}
+            onClick={() => onNavigate("home")}
+            aria-label="Return to home"
+          >
+            YNZER
+          </button>
+        </div>
 
         <nav className={styles.nav} aria-label="Main navigation">
           {NAV_ITEMS.map((item) => {

@@ -6,10 +6,17 @@ import styles from "./DigitalClock.module.css";
 interface DigitalClockProps {
   onActivate?: () => void;
   className?: string;
+  size?: "default" | "hero";
 }
 
-export function DigitalClock({ onActivate, className }: DigitalClockProps) {
+export function DigitalClock({
+  onActivate,
+  className,
+  size = "default",
+}: DigitalClockProps) {
   const time = useClockTime();
+  const timeClass =
+    size === "hero" ? `${styles.time} ${styles.timeHero}` : styles.time;
 
   if (onActivate) {
     return (
@@ -19,7 +26,7 @@ export function DigitalClock({ onActivate, className }: DigitalClockProps) {
         onClick={onActivate}
         aria-label={`Current time ${time}. Click to enter idle screen`}
       >
-        <time className={styles.time} dateTime={time}>
+        <time className={timeClass} dateTime={time}>
           {time}
         </time>
       </button>
@@ -27,8 +34,11 @@ export function DigitalClock({ onActivate, className }: DigitalClockProps) {
   }
 
   return (
-    <div className={`${styles.clock} ${className ?? ""}`} aria-label={`Current time ${time}`}>
-      <time className={styles.time} dateTime={time}>
+    <div
+      className={`${styles.clock} ${className ?? ""}`}
+      aria-label={`Current time ${time}`}
+    >
+      <time className={timeClass} dateTime={time}>
         {time}
       </time>
     </div>

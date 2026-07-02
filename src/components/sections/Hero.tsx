@@ -17,23 +17,17 @@ interface HeroProps {
 
 export function Hero({ onNavigate, onEnterIdle }: HeroProps) {
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 0.25], [0, 120]);
+  const y = useTransform(scrollYProgress, [0, 0.25], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.25], [1, 0.96]);
 
   return (
     <div className={styles.hero}>
-      <motion.div className={styles.stage} style={{ y, opacity, scale }}>
-        <div className={styles.metaRow}>
-          <span className={styles.year}>Portfolio &apos;26</span>
-          <DigitalClock onActivate={onEnterIdle} />
-        </div>
-
+      <motion.div className={styles.stage} style={{ y, opacity }}>
         <motion.div
           className={styles.heroImage}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.1, delay: 0.35, ease: EASE }}
+          transition={{ duration: 1, delay: 0.2, ease: EASE }}
           aria-hidden="true"
         >
           <Image
@@ -47,59 +41,45 @@ export function Hero({ onNavigate, onEnterIdle }: HeroProps) {
           <div className={styles.imageBlend} />
         </motion.div>
 
-        <div className={styles.content}>
-          <div className={styles.greetingBlock}>
-            <motion.h1
-              className={styles.greetingLarge}
-              initial={{ opacity: 0, y: 80 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.15, ease: EASE }}
-            >
-              It&apos;s me, Jhorone!
-            </motion.h1>
-            <motion.p
-              className={styles.greetingSmall}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
-            >
-              get to know me.
-            </motion.p>
-          </div>
-
-          <motion.div
-            className={styles.statement}
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
-          >
-            <h2 className={styles.role}>
-              Jack of all trades, master of none
-              <span className={styles.roleAccent}> & learner.</span>
-            </h2>
-            <p className={styles.tagline}>
-              I am eager to learn and grow, and I am open to new opportunities. 
-              Each day is a new opportunity to learn something new. 
-              I want to explore many things and see what I can do.
-              Basically, I want to live a life of purpose and meaning.
-              and do everything that makes me happy.
-            </p>
-          </motion.div>
-        </div>
-
-        <motion.button
-          type="button"
-          className={styles.scrollCta}
-          onClick={() => onNavigate("projects")}
+        <motion.div
+          className={styles.clock}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
+          transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
         >
-          <span>Explore</span>
-          <span className={styles.scrollLine} />
-        </motion.button>
+          <DigitalClock onActivate={onEnterIdle} size="hero" />
+        </motion.div>
 
-        <div className={styles.rule} aria-hidden="true" />
+        <motion.div
+          className={styles.copy}
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+        >
+          <h1 className={styles.title}>It&apos;s me, Jhorone!</h1>
+          <p className={styles.subtitle}>get to know me.</p>
+
+          <div className={styles.divider} aria-hidden="true" />
+
+          <h2 className={styles.role}>
+            Jack of all trades, master of none
+            <span className={styles.accent}> & learner.</span>
+          </h2>
+          <p className={styles.bio}>
+            I am eager to learn and grow, and I am open to new opportunities.
+            Each day is a new opportunity to learn something new. I want to
+            explore many things and see what I can do — to live with purpose
+            and do everything that makes me happy.
+          </p>
+        </motion.div>
+
+        <button
+          type="button"
+          className={styles.explore}
+          onClick={() => onNavigate("projects")}
+        >
+          Explore
+        </button>
       </motion.div>
 
       <Marquee items={HERO_MARQUEE} />
