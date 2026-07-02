@@ -1,6 +1,6 @@
 # It-s-me-Jhorone
 
-A premium, Vercel-inspired music portfolio for Jhorone (YNZER).
+A created own version portfolio for me.
 
 ## Stack
 
