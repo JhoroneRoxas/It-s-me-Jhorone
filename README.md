@@ -1,6 +1,6 @@
 # It-s-me-Jhorone
 
-A created own version portfolio for me.
+My own version of portfolio for me.
 
 ## Stack
 
