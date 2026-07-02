@@ -1,0 +1,149 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  cursor: pointer;
+  background: #050506;
+  overflow: hidden;
+  outline: none;
+}
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    520px circle at calc(var(--mx) * 1%) calc(var(--my) * 1%),
+    rgba(57, 255, 136, 0.18) 0%,
+    rgba(57, 255, 136, 0.06) 28%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.grid {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform-origin: calc(var(--mx) * 1%) calc(var(--my) * 1%);
+  transform: perspective(900px) rotateX(calc((var(--my) - 50) * 0.12deg))
+    rotateY(calc((var(--mx) - 50) * -0.12deg));
+  pointer-events: none;
+  mask-image: radial-gradient(
+    700px circle at calc(var(--mx) * 1%) calc(var(--my) * 1%),
+    #000 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    transparent 75%
+  );
+  -webkit-mask-image: radial-gradient(
+    700px circle at calc(var(--mx) * 1%) calc(var(--my) * 1%),
+    #000 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    transparent 75%
+  );
+}
+
+.scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(255, 255, 255, 0.012) 3px
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.ripple {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  border-radius: 50%;
+  border: 1px solid rgba(57, 255, 136, 0.45);
+  box-shadow: 0 0 24px rgba(57, 255, 136, 0.15);
+  pointer-events: none;
+}
+
+.cursorRing {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  margin: -44px 0 0 -44px;
+  border-radius: 50%;
+  border: 1px solid rgba(57, 255, 136, 0.35);
+  background: radial-gradient(
+    circle,
+    rgba(57, 255, 136, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  pointer-events: none;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.clock {
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 14vw, 11rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--text);
+  text-shadow: 0 0 40px rgba(57, 255, 136, 0.2);
+}
+
+.hint {
+  margin-top: 12px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  animation: hint-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes hint-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid {
+    transform: none;
+  }
+
+  .hint {
+    animation: none;
+    opacity: 0.8;
+  }
+}

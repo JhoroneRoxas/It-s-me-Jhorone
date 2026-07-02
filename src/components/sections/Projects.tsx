@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
-import { EASE, PROJECTS, PROJECT_TABS } from "@/lib/constants";
+import { PROJECTS, PROJECT_TABS } from "@/data/projects";
+import { EASE } from "@/lib/motion";
 import styles from "./Projects.module.css";
 
 type FilterId = "all" | "opm" | "dev";

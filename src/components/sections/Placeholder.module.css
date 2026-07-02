@@ -41,16 +41,65 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 280px;
+  justify-content: flex-end;
+  min-height: clamp(320px, 42vw, 480px);
   padding: clamp(40px, 6vw, 64px);
-  border-radius: 12px;
-  border: 1px dashed var(--border);
-  background: rgba(0, 0, 0, 0.35);
+  border-radius: 0;
+  border: none;
+  background: transparent;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.block[data-has-image="true"] {
+  padding-top: clamp(220px, 32vw, 360px);
+  border: none;
+  background: transparent;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 15%;
+  opacity: 0.9;
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 35%,
+    rgba(0, 0, 0, 0.5) 70%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 35%,
+    rgba(0, 0, 0, 0.5) 70%,
+    transparent 100%
+  );
+}
+
+.imageWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, transparent 30%, var(--bg) 88%),
+    linear-gradient(to top, var(--bg) 0%, transparent 22%),
+    linear-gradient(to right, var(--bg) 0%, transparent 18%),
+    linear-gradient(to left, var(--bg) 0%, transparent 18%);
+  pointer-events: none;
 }
 
 .badge {
+  position: relative;
+  z-index: 1;
   font-size: 0.625rem;
   font-weight: 500;
   letter-spacing: 0.16em;
@@ -60,6 +109,8 @@
 }
 
 .title {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 500;
@@ -68,6 +119,8 @@
 }
 
 .text {
+  position: relative;
+  z-index: 1;
   font-size: 0.875rem;
   color: var(--text-subtle);
 }

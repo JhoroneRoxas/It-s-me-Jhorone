@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { SectionId } from "@/lib/types";
-import { SECTION_IDS } from "@/lib/constants";
+import type { SectionId } from "@/types";
+import { SECTION_IDS } from "@/config/site";
 
 export function useScrollSpy(defaultSection: SectionId = "home") {
   const [activeSection, setActiveSection] = useState<SectionId>(defaultSection);

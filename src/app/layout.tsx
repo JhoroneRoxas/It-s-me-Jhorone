@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
-import { NoiseOverlay } from "@/components/layout/NoiseOverlay";
+import { NoiseOverlay } from "@/components/overlays/NoiseOverlay";
 import "./globals.css";
 
 const geistSans = Geist({

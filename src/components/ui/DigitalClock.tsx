@@ -1,27 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useClockTime } from "@/hooks/useClockTime";
 import styles from "./DigitalClock.module.css";
 
-function formatTime(date: Date): string {
-  const hours = date.getHours().toString().padStart(2, "0");
-  const minutes = date.getMinutes().toString().padStart(2, "0");
-  const seconds = date.getSeconds().toString().padStart(2, "0");
-  return `${hours}:${minutes}:${seconds}`;
+interface DigitalClockProps {
+  onActivate?: () => void;
+  className?: string;
 }
 
-export function DigitalClock() {
-  const [time, setTime] = useState<string>("00:00:00");
+export function DigitalClock({ onActivate, className }: DigitalClockProps) {
+  const time = useClockTime();
 
-  useEffect(() => {
-    const tick = () => setTime(formatTime(new Date()));
-    tick();
-    const interval = setInterval(tick, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  if (onActivate) {
+    return (
+      <button
+        type="button"
+        className={`${styles.clockButton} ${className ?? ""}`}
+        onClick={onActivate}
+        aria-label={`Current time ${time}. Click to enter idle screen`}
+      >
+        <time className={styles.time} dateTime={time}>
+          {time}
+        </time>
+      </button>
+    );
+  }
 
   return (
-    <div className={styles.clock} aria-label={`Current time ${time}`}>
+    <div className={`${styles.clock} ${className ?? ""}`} aria-label={`Current time ${time}`}>
       <time className={styles.time} dateTime={time}>
         {time}
       </time>

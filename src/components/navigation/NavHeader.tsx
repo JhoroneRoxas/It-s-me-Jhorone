@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { NAV_ITEMS } from "@/lib/constants";
-import type { SectionId } from "@/lib/types";
+import { NAV_ITEMS } from "@/config/site";
+import type { SectionId } from "@/types";
 import styles from "./NavHeader.module.css";
 
 interface NavHeaderProps {

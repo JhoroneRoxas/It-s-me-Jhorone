@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Marquee } from "@/components/ui/Marquee";
-import { CONTACT_COMMANDS, EASE } from "@/lib/constants";
+import { CONTACT_COMMANDS } from "@/data/contact";
+import { EASE } from "@/lib/motion";
 import styles from "./Contact.module.css";
 
 const CTA_ITEMS = ["Let's Collaborate", "Get In Touch", "Say Hello"];

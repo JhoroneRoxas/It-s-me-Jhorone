@@ -1,18 +1,4 @@
-import type { ContactCommand, NavItem, ProjectItem } from "./types";
-
-export const ACCENT_GREEN = "#39ff88";
-
-export const NAV_ITEMS: NavItem[] = [
-  { id: "home", label: "Home" },
-  { id: "projects", label: "Projects" },
-];
-
-export const HERO_MARQUEE = [
-  "Practiced.",
-  "Learned.",
-  "Loved.",
-  "By Jhorone.",
-];
+import type { ProjectItem } from "@/types";
 
 export const PROJECTS: ProjectItem[] = [
   {
@@ -79,36 +65,3 @@ export const PROJECT_TABS = [
   { id: "opm" as const, label: "OPM" },
   { id: "dev" as const, label: "Dev Projects" },
 ];
-
-export const CONTACT_COMMANDS: ContactCommand[] = [
-  {
-    command: "mailto --to jhorone@email.com",
-    label: "Send Email",
-    href: "mailto:jhorone@email.com",
-  },
-  {
-    command: "open --url github.com/jhorone",
-    label: "GitHub",
-    href: "https://github.com",
-  },
-  {
-    command: "open --url linkedin.com/in/jhorone",
-    label: "LinkedIn",
-    href: "https://linkedin.com",
-  },
-  {
-    command: "open --url instagram.com/jhorone",
-    label: "Instagram",
-    href: "https://instagram.com",
-  },
-];
-
-export const EASE = [0.22, 1, 0.36, 1] as const;
-
-export const SECTION_IDS = [
-  "home",
-  "about",
-  "instruments",
-  "projects",
-  "contact",
-] as const;

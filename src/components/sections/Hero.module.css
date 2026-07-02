@@ -19,6 +19,7 @@
     calc(var(--nav-height) + 16px)
     var(--page-gutter)
     40px;
+  overflow: hidden;
   will-change: transform, opacity;
 }
 
@@ -27,6 +28,7 @@
   top: calc(var(--nav-height) + 12px);
   left: var(--page-gutter);
   right: var(--page-gutter);
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -40,16 +42,52 @@
   color: var(--text-subtle);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: clamp(24px, 5vw, 80px);
-  align-items: end;
-  width: 100%;
+.heroImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.primary {
-  min-width: 0;
+.image {
+  object-fit: cover;
+  object-position: center 20%;
+  opacity: 0.92;
+  mask-image: linear-gradient(
+    to left,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.55) 72%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.55) 72%,
+    transparent 100%
+  );
+}
+
+.imageBlend {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to left, var(--bg) 0%, transparent 48%),
+    linear-gradient(to bottom, var(--bg) 0%, transparent 18%),
+    linear-gradient(to top, var(--bg) 0%, transparent 22%),
+    linear-gradient(to right, transparent 70%, var(--bg) 100%);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 50%);
+  padding-right: clamp(16px, 3vw, 48px);
 }
 
 .greetingBlock {
@@ -58,12 +96,11 @@
 
 .greetingLarge {
   font-family: var(--font-display);
-  font-size: clamp(5rem, 16vw, 18rem);
+  font-size: clamp(4rem, 11vw, 16rem);
   font-weight: 500;
   line-height: 0.88;
   letter-spacing: -0.045em;
   text-transform: capitalize;
-  white-space: nowrap;
 }
 
 .greetingSmall {
@@ -78,7 +115,7 @@
 }
 
 .statement {
-  max-width: min(62ch, 48vw);
+  max-width: 52ch;
 }
 
 .role {
@@ -99,37 +136,14 @@
   font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
   line-height: 1.85;
   color: var(--text-muted);
-  max-width: 56ch;
-}
-
-.secondary {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  min-height: clamp(200px, 28vw, 420px);
-  padding-bottom: clamp(8px, 2vw, 24px);
-}
-
-.watermark {
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 11vw, 12rem);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  line-height: 0.9;
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07);
-  user-select: none;
+  max-width: 48ch;
 }
 
 .scrollCta {
   position: absolute;
   right: var(--page-gutter);
   bottom: clamp(72px, 10vh, 120px);
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,6 +173,7 @@
   left: var(--page-gutter);
   right: var(--page-gutter);
   bottom: 0;
+  z-index: 2;
   height: 1px;
   background: linear-gradient(
     90deg,
@@ -182,27 +197,45 @@
 }
 
 @media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .heroImage {
+    width: 100%;
+    height: 55%;
+    top: auto;
+    bottom: 0;
+    opacity: 0.45;
   }
 
-  .secondary {
-    display: none;
+  .image {
+    object-position: center top;
+    mask-image: linear-gradient(
+      to top,
+      #000 0%,
+      rgba(0, 0, 0, 0.6) 45%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to top,
+      #000 0%,
+      rgba(0, 0, 0, 0.6) 45%,
+      transparent 100%
+    );
   }
 
-  .greetingLarge {
-    white-space: normal;
+  .imageBlend {
+    background:
+      linear-gradient(to top, var(--bg) 0%, transparent 55%),
+      linear-gradient(to bottom, var(--bg) 0%, transparent 30%);
   }
 
-  .statement {
-    max-width: none;
+  .content {
+    width: 100%;
+    padding-right: 0;
   }
 
   .scrollCta {
     position: static;
     align-self: flex-end;
     margin-top: 40px;
-    margin-right: 0;
   }
 
   .stage {
@@ -213,7 +246,7 @@
 
 @media (min-width: 1600px) {
   .greetingLarge {
-    font-size: 20rem;
+    font-size: 18rem;
   }
 
   .role {
@@ -223,6 +256,6 @@
 
 @media (min-width: 2000px) {
   .greetingLarge {
-    font-size: 22rem;
+    font-size: 20rem;
   }
 }

@@ -6,7 +6,7 @@ A premium, Vercel-inspired music portfolio for Jhorone (YNZER).
 
 - **Next.js 15** (App Router)
 - **React 19**
-- **Framer Motion** — section transitions & layout animations
+- **Framer Motion** — scroll and layout animations
 - **CSS Modules** — no heavy frameworks
 
 ## Getting Started
@@ -18,21 +18,29 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Structure
+## Project Structure
 
 ```
 src/
-├── app/              # Next.js app router
+├── app/                    # Next.js routes, layout, global styles
 ├── components/
-│   ├── layout/       # Nav, noise overlay, page shell
-│   ├── sections/     # Hero, Dashboard, Projects, Contact
-│   └── ui/           # DigitalClock, shared UI
-└── lib/              # Constants & types
+│   ├── navigation/         # NavHeader
+│   ├── overlays/           # NoiseOverlay, ScrollProgress
+│   ├── sections/           # Hero, Projects, Contact, Placeholder
+│   ├── shell/              # PortfolioShell, Preloader
+│   └── ui/                 # DigitalClock, Marquee, Reveal
+├── config/                 # Site config (nav, sections, assets)
+├── data/                   # Content data (projects, contact links)
+├── hooks/                  # useScrollSpy
+├── lib/                    # Shared utilities (motion easing)
+└── types/                  # Shared TypeScript types
+public/                     # Static assets
 ```
 
 ## Customize
 
-- Replace `public/profile.svg` with your photo (`profile.jpg` works — update `Hero.tsx`)
-- Edit content in `src/lib/constants.ts`
-- Accent green: `--accent: #39ff88` in `globals.css`
-
+- Profile photos live in `public/` — paths are set in `src/config/assets.ts`
+- Edit nav and section config in `src/config/site.ts`
+- Edit projects in `src/data/projects.ts`
+- Edit contact links in `src/data/contact.ts`
+- Accent green: `--accent: #39ff88` in `src/app/globals.css`

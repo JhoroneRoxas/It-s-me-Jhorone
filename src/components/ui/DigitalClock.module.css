@@ -1,7 +1,39 @@
-.clock {
+.clock,
+.clockButton {
   display: flex;
   align-items: flex-end;
   font-family: var(--font-mono);
+}
+
+.clockButton {
+  position: relative;
+  padding: 4px 0;
+  border-radius: 4px;
+  transition:
+    color 0.3s var(--ease-out-expo),
+    opacity 0.3s var(--ease-out-expo);
+}
+
+.clockButton::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s var(--ease-out-expo);
+}
+
+.clockButton:hover {
+  opacity: 0.85;
+}
+
+.clockButton:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .time {

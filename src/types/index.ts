@@ -1,4 +1,9 @@
-export type SectionId = "home" | "about" | "instruments" | "projects" | "contact";
+export type SectionId =
+  | "home"
+  | "about"
+  | "instruments"
+  | "projects"
+  | "contact";
 
 export type ProjectCategory = "opm" | "dev";
 

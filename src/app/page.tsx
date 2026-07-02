@@ -1,4 +1,4 @@
-import { PortfolioShell } from "@/components/layout/PortfolioShell";
+import { PortfolioShell } from "@/components/shell/PortfolioShell";
 
 export default function Home() {
   return <PortfolioShell />;
