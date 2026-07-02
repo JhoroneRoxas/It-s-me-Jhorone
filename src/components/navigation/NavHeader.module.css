@@ -36,7 +36,7 @@
 
 .logo {
   font-family: var(--font-display);
-  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.1875rem, 1.7vw, 1.5rem);
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -65,8 +65,8 @@
 
 .link {
   position: relative;
-  padding: 8px 0;
-  font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
+  padding: 10px 0;
+  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -95,12 +95,12 @@
 
 .contactBtn {
   justify-self: end;
-  font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
+  font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text);
-  padding: 11px 22px;
+  padding: 13px 26px;
   border: 1px solid var(--border-hover);
   border-radius: 999px;
   transition:
