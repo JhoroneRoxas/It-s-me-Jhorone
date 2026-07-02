@@ -25,7 +25,6 @@
 
 .image {
   object-fit: cover;
-  /* Subject sits on the left of the source photo — pan away from the foreground blur */
   object-position: 22% 24%;
   opacity: 0.9;
   mask-image: linear-gradient(
@@ -66,8 +65,28 @@
 .copy {
   position: relative;
   z-index: 1;
-  width: min(50%, 48rem);
+  width: min(52%, 46rem);
   max-width: var(--max-width);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
 }
 
 .title {
@@ -79,6 +98,12 @@
   margin-bottom: 14px;
 }
 
+.name {
+  display: inline-block;
+  cursor: default;
+  transition: color 0.35s var(--ease-out-expo);
+}
+
 .subtitle {
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 2vw, 1.75rem);
@@ -87,31 +112,105 @@
 }
 
 .divider {
-  width: 56px;
+  width: 72px;
   height: 1px;
   margin: clamp(28px, 3.5vw, 40px) 0;
-  background: var(--accent);
-  opacity: 0.65;
+  transform-origin: left center;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    rgba(57, 255, 136, 0.25) 100%
+  );
+  box-shadow: 0 0 12px rgba(57, 255, 136, 0.25);
 }
 
 .role {
   font-family: var(--font-display);
   font-size: clamp(1.375rem, 2.1vw, 1.875rem);
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.45;
   letter-spacing: -0.02em;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.roleHighlight {
+  display: inline;
+  padding: 0.1em 0.32em;
+  margin: 0 -0.08em;
+  border-radius: 6px;
+  background: rgba(57, 255, 136, 0.07);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition:
+    background 0.4s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-out-expo);
+}
+
+.role:hover .roleHighlight {
+  background: rgba(57, 255, 136, 0.13);
+  box-shadow: 0 0 28px rgba(57, 255, 136, 0.1);
 }
 
 .accent {
+  display: inline-block;
   color: var(--accent);
+  cursor: default;
+  transition: text-shadow 0.35s var(--ease-out-expo);
 }
 
 .bio {
-  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 46ch;
+  margin-bottom: 28px;
+}
+
+.bioLead {
+  font-size: clamp(1.03125rem, 1.15vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.bioLine {
+  font-size: clamp(0.96875rem, 1.05vw, 1.03125rem);
   line-height: 1.7;
   color: var(--text-muted);
-  max-width: 48ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition:
+    color 0.35s var(--ease-out-expo),
+    border-color 0.35s var(--ease-out-expo),
+    background 0.35s var(--ease-out-expo),
+    transform 0.35s var(--ease-out-expo),
+    box-shadow 0.35s var(--ease-out-expo);
+}
+
+.chip:hover {
+  color: var(--text);
+  border-color: rgba(57, 255, 136, 0.35);
+  background: rgba(57, 255, 136, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.chip:active {
+  transform: translateY(0);
 }
 
 .explore {
@@ -119,6 +218,13 @@
   right: var(--page-gutter);
   bottom: 56px;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.exploreLabel {
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -127,17 +233,24 @@
   transition: color 0.3s var(--ease-out-expo);
 }
 
-.explore:hover {
+.explore:hover .exploreLabel {
   color: var(--text);
 }
 
-.explore::after {
-  content: "";
+.exploreLine {
   display: block;
   width: 1px;
   height: 36px;
-  margin: 10px auto 0;
   background: linear-gradient(to bottom, var(--accent), transparent);
+  transform-origin: top center;
+  transition:
+    transform 0.4s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-out-expo);
+}
+
+.explore:hover .exploreLine {
+  transform: scaleY(1.15);
+  box-shadow: 0 0 12px rgba(57, 255, 136, 0.35);
 }
 
 @media (max-width: 900px) {
@@ -191,7 +304,7 @@
 
   .explore {
     position: static;
-    margin-top: 40px;
+    margin-top: 32px;
     align-self: flex-end;
   }
 
@@ -203,5 +316,15 @@
 @media (min-width: 1400px) {
   .title {
     font-size: 6.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip:hover {
+    transform: none;
+  }
+
+  .explore:hover .exploreLine {
+    transform: none;
   }
 }

@@ -1,4 +1,4 @@
-.bar {
+.topBar {
   position: fixed;
   top: 0;
   left: 0;
@@ -6,5 +6,69 @@
   height: 2px;
   z-index: 200;
   transform-origin: left;
-  background: linear-gradient(90deg, var(--accent), rgba(57, 255, 136, 0.4));
+  background: linear-gradient(90deg, var(--accent), rgba(57, 255, 136, 0.35));
+  box-shadow: 0 0 14px rgba(57, 255, 136, 0.35);
+}
+
+.rail {
+  position: fixed;
+  right: clamp(14px, 2vw, 32px);
+  top: calc(var(--nav-height) + 16px);
+  bottom: 64px;
+  width: 6px;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.railTrack {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.railFill {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  right: 1px;
+  height: 100%;
+  border-radius: 999px;
+  transform-origin: top center;
+  background: linear-gradient(
+    to bottom,
+    var(--accent) 0%,
+    rgba(57, 255, 136, 0.45) 55%,
+    rgba(57, 255, 136, 0.08) 100%
+  );
+  box-shadow: 0 0 18px rgba(57, 255, 136, 0.22);
+}
+
+.thumb {
+  position: absolute;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow:
+    0 0 8px var(--accent-glow),
+    0 0 18px rgba(57, 255, 136, 0.35);
+}
+
+@media (max-width: 768px) {
+  .rail {
+    right: 10px;
+    width: 4px;
+  }
+
+  .thumb {
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+  }
 }

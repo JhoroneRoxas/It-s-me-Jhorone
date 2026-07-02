@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { scrollToSection as scrollTo } from "@/lib/scroll";
 import type { SectionId } from "@/types";
 import { SECTION_IDS } from "@/config/site";
 
@@ -38,8 +39,5 @@ export function useScrollSpy(defaultSection: SectionId = "home") {
 }
 
 export function scrollToSection(id: SectionId) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  scrollTo(id);
 }
