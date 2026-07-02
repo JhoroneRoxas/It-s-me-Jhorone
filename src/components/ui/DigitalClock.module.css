@@ -1,0 +1,13 @@
+.clock {
+  display: flex;
+  align-items: flex-end;
+  font-family: var(--font-mono);
+}
+
+.time {
+  font-size: clamp(1.5rem, 2.5vw, 3.25rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}

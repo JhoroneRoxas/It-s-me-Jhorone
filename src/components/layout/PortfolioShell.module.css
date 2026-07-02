@@ -1,0 +1,56 @@
+.shell {
+  position: relative;
+  min-height: 100dvh;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  scroll-margin-top: var(--nav-height);
+}
+
+.footer {
+  position: relative;
+  z-index: 1;
+  padding: 80px var(--page-gutter) 64px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.footerCredit {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.footerName {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+
+.returnTop {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition:
+    color 0.3s var(--ease-out-expo),
+    border-color 0.3s var(--ease-out-expo),
+    background 0.3s var(--ease-out-expo);
+}
+
+.returnTop:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.03);
+}

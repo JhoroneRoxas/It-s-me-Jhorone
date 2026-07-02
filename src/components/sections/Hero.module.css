@@ -1,0 +1,228 @@
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100dvh - 56px);
+  padding:
+    calc(var(--nav-height) + 16px)
+    var(--page-gutter)
+    40px;
+  will-change: transform, opacity;
+}
+
+.metaRow {
+  position: absolute;
+  top: calc(var(--nav-height) + 12px);
+  left: var(--page-gutter);
+  right: var(--page-gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.year {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(24px, 5vw, 80px);
+  align-items: end;
+  width: 100%;
+}
+
+.primary {
+  min-width: 0;
+}
+
+.greetingBlock {
+  margin-bottom: clamp(28px, 4vw, 56px);
+}
+
+.greetingLarge {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 16vw, 18rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.greetingSmall {
+  margin-top: clamp(8px, 1.2vw, 16px);
+  margin-left: clamp(4px, 0.5vw, 8px);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.8vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
+  text-transform: lowercase;
+}
+
+.statement {
+  max-width: min(62ch, 48vw);
+}
+
+.role {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.8vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: clamp(16px, 2vw, 24px);
+  text-transform: lowercase;
+}
+
+.roleAccent {
+  color: var(--accent);
+}
+
+.tagline {
+  font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
+  line-height: 1.85;
+  color: var(--text-muted);
+  max-width: 56ch;
+}
+
+.secondary {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  min-height: clamp(200px, 28vw, 420px);
+  padding-bottom: clamp(8px, 2vw, 24px);
+}
+
+.watermark {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 11vw, 12rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07);
+  user-select: none;
+}
+
+.scrollCta {
+  position: absolute;
+  right: var(--page-gutter);
+  bottom: clamp(72px, 10vh, 120px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  transition: color 0.3s var(--ease-out-expo);
+}
+
+.scrollCta:hover {
+  color: var(--text);
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: clamp(48px, 8vh, 80px);
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: pulse-line 2s ease-in-out infinite;
+}
+
+.rule {
+  position: absolute;
+  left: var(--page-gutter);
+  right: var(--page-gutter);
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border) 8%,
+    var(--border) 92%,
+    transparent
+  );
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.6);
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .secondary {
+    display: none;
+  }
+
+  .greetingLarge {
+    white-space: normal;
+  }
+
+  .statement {
+    max-width: none;
+  }
+
+  .scrollCta {
+    position: static;
+    align-self: flex-end;
+    margin-top: 40px;
+    margin-right: 0;
+  }
+
+  .stage {
+    justify-content: flex-start;
+    padding-top: calc(var(--nav-height) + 48px);
+  }
+}
+
+@media (min-width: 1600px) {
+  .greetingLarge {
+    font-size: 20rem;
+  }
+
+  .role {
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: 2000px) {
+  .greetingLarge {
+    font-size: 22rem;
+  }
+}
